@@ -66,6 +66,7 @@ $routes->group('admin', function (RouteCollection $routes) {
    // ── Dashboard (dashboard.view-admin) ──
    $routes->get('', 'Admin\Dashboard::index', ['filter' => 'permission:dashboard.view-admin']);
    $routes->get('dashboard', 'Admin\Dashboard::index', ['filter' => 'permission:dashboard.view-admin']);
+   $routes->get('dashboard/live-stats', 'Admin\Dashboard::getLiveStats', ['filter' => 'permission:dashboard.view-admin']);
    $routes->post('dashboard/filter-data', 'Admin\Dashboard::filterData', ['filter' => 'permission:dashboard.view-admin']);
 
    // ── Perizinan ──
