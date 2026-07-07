@@ -44,9 +44,9 @@ class JurusanController extends BaseController
                 'result' => 1,
                 'htmlContent' => $htmlContent,
             ];
-            echo json_encode($data);
+            return $this->response->setJSON($data);
         } else {
-            echo json_encode(['result' => 0]);
+            return $this->response->setJSON(['result' => 0]);
         }
     }
 

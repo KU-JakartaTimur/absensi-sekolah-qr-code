@@ -91,11 +91,11 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-siswa'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'kelas': kelas,
             'id_kelas': idKelas,
             'tanggal': tanggal
-         },
+         }),
          success: function (response, status, xhr) {
             // console.log(status);
             $('#dataSiswa').html(response);
@@ -130,10 +130,10 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-siswa/kehadiran'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'id_presensi': idPresensi,
             'id_siswa': idSiswa
-         },
+         }),
          success: function (response, status, xhr) {
             // console.log(status);
             $('#modalFormUbahSiswa').html(response);
@@ -160,7 +160,7 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-siswa/edit'); ?>",
          type: 'post',
-         data: form,
+         data: setSerializedData(form),
          success: function (response, status, xhr) {
             // console.log(status);
 
