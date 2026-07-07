@@ -140,12 +140,12 @@
       jQuery.ajax({
         url: "<?= base_url('admin/generate/siswa'); ?>",
         type: 'post',
-        data: {
+        data: setAjaxData({
           nama: element['nama'],
           unique_code: element['unique_code'],
           id_kelas: element['id_kelas'],
           nomor: element['nomor']
-        },
+        }),
         success: function (response) {
           if (!response) return;
           if (i != dataSiswa.length) {

@@ -49,6 +49,7 @@
                             <p class="text-warning">Peringatan: Tindakan ini akan menimpa database saat ini.</p>
                             <form action="<?= base_url('admin/backup/db/restore'); ?>" method="post"
                                 enctype="multipart/form-data">
+                                <?= csrf_field() ?>
                                 <div class="form-group">
                                     <label>Pilih file</label>
                                     <input type="file" name="file_backup_db" class="form-control" accept=".sql" required
@@ -85,6 +86,7 @@
                             <p class="text-warning">Peringatan: Foto yang ada akan ditimpa jika nama file sama.</p>
                             <form action="<?= base_url('admin/backup/photos/restore'); ?>" method="post"
                                 enctype="multipart/form-data">
+                                <?= csrf_field() ?>
                                 <div class="form-group">
                                     <label>Pilih file</label>
                                     <input type="file" name="file_backup_photos" class="form-control" accept=".zip"
