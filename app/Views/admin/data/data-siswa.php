@@ -104,11 +104,11 @@
          jQuery.ajax({
             url: "<?= base_url('/admin/siswa'); ?>",
             type: 'post',
-            data: {
+            data: setAjaxData({
                'kelas': _kelas,
                'jurusan': _jurusan,
                'index': _index
-            },
+            }),
             success: function (response, status, xhr) {
                // console.log(status);
                $('#dataSiswa').html(response);

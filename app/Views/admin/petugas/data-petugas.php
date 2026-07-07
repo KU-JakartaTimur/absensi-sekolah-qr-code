@@ -74,7 +74,7 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/petugas'); ?>",
          type: 'post',
-         data: {},
+         data: setAjaxData({}),
          success: function(response, status, xhr) {
             // console.log(status);
             $('#dataPetugas').html(response);

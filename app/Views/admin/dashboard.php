@@ -597,20 +597,9 @@
                 type: 'POST',
                 data: setAjaxData({ id_kelas: idKelas }),
                 success: function (response) {
-                    const obj = JSON.parse(response);
-                    if (obj.result == 1) {
-                        $('#siswaStatsContainer').html(obj.htmlContent);
-                        updateSiswaChart(obj.chartData);
-
-                        // Update Titles
-                        // const className = $('#filterKelas option:selected').attr('data-kelas');
-                        // if (idKelas == "") {
-                        //     $('#titleSiswaStats').text("Absensi Siswa Hari Ini");
-                        //     $('#titleSiswaChart').text("Tingkat Kehadiran Siswa");
-                        // } else {
-                        //     $('#titleSiswaStats').text("Absensi Siswa " + className + " Hari Ini");
-                        //     $('#titleSiswaChart').text("Tingkat Kehadiran Siswa " + className);
-                        // }
+                     if (response.result == 1) {
+                        $('#siswaStatsContainer').html(response.htmlContent);
+                        updateSiswaChart(response.chartData);
                     }
                 },
                 error: function (xhr, status, thrown) {

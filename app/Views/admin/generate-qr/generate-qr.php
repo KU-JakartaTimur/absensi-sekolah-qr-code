@@ -225,12 +225,12 @@
       jQuery.ajax({
         url: "<?= base_url('admin/generate/siswa'); ?>",
         type: 'post',
-        data: {
+        data: setAjaxData({
           nama: element['nama'],
           unique_code: element['unique_code'],
           id_kelas: element['id_kelas'],
           nomor: element['nomor']
-        },
+        }),
         success: function (response) {
           if (!response) return;
           if (i != dataSiswa.length) {
@@ -265,9 +265,9 @@
     jQuery.ajax({
       url: "<?= base_url('admin/generate/siswa-by-kelas'); ?>",
       type: 'post',
-      data: {
+      data: setAjaxData({
         idKelas: idKelas
-      },
+      }),
       success: function (response) {
         dataSiswaPerKelas = response;
 
@@ -293,12 +293,12 @@
           jQuery.ajax({
             url: "<?= base_url('admin/generate/siswa'); ?>",
             type: 'post',
-            data: {
+            data: setAjaxData({
               nama: element['nama_siswa'],
               unique_code: element['unique_code'],
               id_kelas: element['id_kelas'],
               nomor: element['nis']
-            },
+            }),
             success: function (response) {
               if (!response) return;
               if (i != dataSiswaPerKelas.length) {
@@ -344,11 +344,11 @@
       jQuery.ajax({
         url: "<?= base_url('admin/generate/guru'); ?>",
         type: 'post',
-        data: {
+        data: setAjaxData({
           nama: element['nama'],
           unique_code: element['unique_code'],
           nomor: element['nomor']
-        },
+        }),
         success: function (response) {
           if (!response) return;
           if (i != dataGuru.length) {

@@ -187,7 +187,7 @@ class Dashboard extends BaseController
          'totalSiswa' => $jumlahSiswa,
       ];
 
-      return json_encode([
+      return $this->response->setJSON([
          'result' => 1,
          'htmlContent' => view('admin/_dashboard_siswa_stats', $data),
          'chartData' => $grafikKehadiranSiswa,

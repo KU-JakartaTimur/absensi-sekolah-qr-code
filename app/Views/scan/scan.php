@@ -260,10 +260,10 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
       jQuery.ajax({
          url: "<?= base_url('scan/cek'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'unique_code': code,
             'waktu': '<?= strtolower($waktu); ?>'
-         },
+         }),
          success: function (response, status, xhr) {
             audio.play();
             console.log(response);

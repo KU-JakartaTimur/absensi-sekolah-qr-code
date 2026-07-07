@@ -76,7 +76,7 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/guru'); ?>",
          type: 'post',
-         data: {},
+         data: setAjaxData({}),
          success: function (response, status, xhr) {
             // console.log(status);
             $('#dataGuru').html(response);

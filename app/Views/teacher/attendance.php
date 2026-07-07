@@ -58,11 +58,11 @@
       jQuery.ajax({
          url: "<?= base_url('/teacher/attendance/get-list'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'kelas': kelas,
             'id_kelas': idKelas,
             'tanggal': tanggal
-         },
+         }),
          success: function (response, status, xhr) {
             $('#dataSiswa').html(response);
          },
@@ -79,10 +79,10 @@
       jQuery.ajax({
          url: "<?= base_url('/teacher/attendance/get-edit-modal'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'id_presensi': idPresensi,
             'id_siswa': idSiswa
-         },
+         }),
          success: function (response, status, xhr) {
             $('#modalFormUbahSiswa').html(response);
          },
@@ -105,7 +105,7 @@
       jQuery.ajax({
          url: "<?= base_url('/teacher/attendance/update-single'); ?>",
          type: 'post',
-         data: form,
+         data: setSerializedData(form),
          success: function (response, status, xhr) {
             if (response['status']) {
                getSiswa(lastIdKelas, lastKelas);

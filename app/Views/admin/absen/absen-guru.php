@@ -60,9 +60,9 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-guru'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'tanggal': tanggal
-         },
+         }),
          success: function(response, status, xhr) {
             // console.log(status);
             $('#dataGuru').html(response);
@@ -91,7 +91,7 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-guru/edit'); ?>",
          type: 'post',
-         data: form,
+         data: setSerializedData(form),
          success: function(response, status, xhr) {
             // console.log(status);
 
@@ -114,10 +114,10 @@
       jQuery.ajax({
          url: "<?= base_url('/admin/absen-guru/kehadiran'); ?>",
          type: 'post',
-         data: {
+         data: setAjaxData({
             'id_presensi': idPresensi,
             'id_guru': idGuru
-         },
+         }),
          success: function(response, status, xhr) {
             // console.log(status);
             $('#modalFormUbahGuru').html(response);
