@@ -52,9 +52,8 @@ function fetchKelasJurusanData(type, target) {
     type: 'post',
     data: setAjaxData({}),
     success: function (response) {
-      const obj = JSON.parse(response);
-      if (obj.result === 1) {
-        $(target).html(obj.htmlContent);
+      if (response.result === 1) {
+        $(target).html(response.htmlContent);
       } else {
         $(target).html('<p class="text-center mt-3">Data tidak ditemukan</p>');
       }
