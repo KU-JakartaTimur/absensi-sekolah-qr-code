@@ -33,7 +33,7 @@ class Perizinan extends BaseController
             return view('teacher/perizinan/index', [
                 'title' => 'Data Perizinan Siswa',
                 'perizinan' => [],
-                'ctx' => 'perizinan',
+                'ctx' => 'teacher-perizinan',
                 'no_class' => true
             ]);
         }
@@ -51,7 +51,7 @@ class Perizinan extends BaseController
         $data = [
             'title' => 'Data Perizinan Siswa',
             'perizinan' => $perizinan,
-            'ctx' => 'perizinan'
+            'ctx' => 'teacher-perizinan'
         ];
         return view('teacher/perizinan/index', $data);
     }
