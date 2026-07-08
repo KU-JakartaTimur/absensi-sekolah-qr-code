@@ -110,74 +110,68 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
 
+<?= $this->section('scripts') ?>
 <script>
     $(document).ready(function() {
         $('#tablePerizinan').DataTable({
             columnDefs: [{ orderable: false, targets: [-1] }],
             order: [[2, 'desc']]
         });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        // Konfirmasi Status (Setujui/Tolak)
-        const btns = document.querySelectorAll('.btn-konfirmasi');
-        btns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const status = this.getAttribute('data-status');
+        // Konfirmasi Status (Setujui/Tolak) - delegated karena DataTable
+        $(document).on('click', '.btn-konfirmasi', function() {
+            const id = $(this).data('id');
+            const status = $(this).data('status');
 
-                swal({
-                    title: "Konfirmasi",
-                    text: `Apakah Anda yakin ingin mengubah status menjadi ${status}?`,
-                    icon: "warning",
-                    buttons: ["Batal", "Ya, Lanjutkan"],
-                    dangerMode: status === 'Ditolak',
-                }).then((willProcess) => {
-                    if (willProcess) {
-                        fetch('<?= base_url('admin/perizinan/konfirmasi') ?>', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded',
-                                    'X-Requested-With': 'XMLHttpRequest'
-                                },
-                                body: `id_perizinan=${id}&status=${status}&<?= csrf_token() ?>=<?= csrf_hash() ?>`
-                            })
-                            .then(response => response.json())
-                            .then(result => {
-                                if (result.status === 'success') {
-                                    swal("Berhasil", result.message, "success").then(() => {
-                                        location.reload();
-                                    });
-                                } else {
-                                    swal("Gagal", result.message, "error");
-                                }
-                            })
-                            .catch(err => {
-                                console.error(err);
-                                swal("Error", "Terjadi kesalahan saat memproses data.", "error");
-                            });
-                    }
-                });
+            swal({
+                title: "Konfirmasi",
+                text: `Apakah Anda yakin ingin mengubah status menjadi ${status}?`,
+                icon: "warning",
+                buttons: ["Batal", "Ya, Lanjutkan"],
+                dangerMode: status === 'Ditolak',
+            }).then((willProcess) => {
+                if (willProcess) {
+                    fetch('<?= base_url('admin/perizinan/konfirmasi') ?>', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                                'X-Requested-With': 'XMLHttpRequest'
+                            },
+                            body: `id_perizinan=${id}&status=${status}&<?= csrf_token() ?>=<?= csrf_hash() ?>`
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            if (result.status === 'success') {
+                                swal("Berhasil", result.message, "success").then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                swal("Gagal", result.message, "error");
+                            }
+                        })
+                        .catch(err => {
+                            console.error(err);
+                            swal("Error", "Terjadi kesalahan saat memproses data.", "error");
+                        });
+                }
             });
         });
 
-        // Konfirmasi Hapus
-        const deleteBtns = document.querySelectorAll('.btn-delete');
-        deleteBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const form = this.closest('.form-delete');
-                swal({
-                    title: "Hapus Data?",
-                    text: "Data yang dihapus tidak dapat dikembalikan!",
-                    icon: "warning",
-                    buttons: ["Batal", "Hapus"],
-                    dangerMode: true,
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        form.submit();
-                    }
-                });
+        // Konfirmasi Hapus - delegated karena DataTable
+        $(document).on('click', '.btn-delete', function() {
+            const form = $(this).closest('.form-delete');
+            swal({
+                title: "Hapus Data?",
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: "warning",
+                buttons: ["Batal", "Hapus"],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    form.submit();
+                }
             });
         });
     });

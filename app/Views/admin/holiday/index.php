@@ -88,6 +88,7 @@
                             <div class="table-responsive">
                                 <table id="tableHoliday" class="table table-hover">
                                     <thead class="text-info">
+                                      <tr>
                                         <th width="40">
                                             <div class="form-check">
                                                 <label class="form-check-label">
@@ -100,6 +101,7 @@
                                         <th>Tanggal</th>
                                         <th>Keterangan</th>
                                         <th>Aksi</th>
+                                      </tr>
                                     </thead>
                                     <tbody>
                                         <?php if (empty($holidays)): ?>
@@ -137,46 +139,38 @@
         </div>
     </div>
 </div>
+<?= $this->endSection() ?>
 
+<?= $this->section('scripts') ?>
 <script>
+    function toggleBulkButton() {
+        const checkedCount = $('.holiday-checkbox:checked').length;
+        const btn = $('#btnBulkDelete');
+        btn.prop('disabled', checkedCount === 0);
+        if (checkedCount > 0) {
+            btn.html(`<i class="material-icons">delete_sweep</i> Hapus Terpilih (${checkedCount})`);
+        } else {
+            btn.html(`<i class="material-icons">delete_sweep</i> Hapus Terpilih`);
+        }
+    }
+
     $(document).ready(function() {
         $('#tableHoliday').DataTable({
             columnDefs: [{ orderable: false, targets: [0, -1] }],
             order: [[2, 'desc']]
         });
-    });
 
-    document.addEventListener('DOMContentLoaded', function() {
-        const checkAll = document.getElementById('checkAll');
-        const checkboxes = document.querySelectorAll('.holiday-checkbox');
-        const btnBulkDelete = document.getElementById('btnBulkDelete');
-        const formBulkDelete = document.getElementById('formBulkDelete');
-
-        // Check All functionality
-        checkAll.addEventListener('change', function() {
-            checkboxes.forEach(cb => {
-                cb.checked = this.checked;
-            });
+        // Check All
+        $('#checkAll').on('change', function() {
+            $('.holiday-checkbox').prop('checked', this.checked);
             toggleBulkButton();
         });
 
-        // Individual checkbox functionality
-        checkboxes.forEach(cb => {
-            cb.addEventListener('change', toggleBulkButton);
-        });
+        // Individual checkbox (delegated karena DataTable)
+        $(document).on('change', '.holiday-checkbox', toggleBulkButton);
 
-        function toggleBulkButton() {
-            const checkedCount = document.querySelectorAll('.holiday-checkbox:checked').length;
-            btnBulkDelete.disabled = checkedCount === 0;
-            if (checkedCount > 0) {
-                btnBulkDelete.innerHTML = `<i class="material-icons">delete_sweep</i> Hapus Terpilih (${checkedCount})`;
-            } else {
-                btnBulkDelete.innerHTML = `<i class="material-icons">delete_sweep</i> Hapus Terpilih`;
-            }
-        }
-
-        // Bulk Delete Action
-        btnBulkDelete.addEventListener('click', function() {
+        // Bulk Delete
+        $('#btnBulkDelete').on('click', function() {
             swal({
                 title: "Hapus Masal?",
                 text: "Hari libur yang dipilih akan dihapus dan presensi akan kembali aktif pada tanggal tersebut.",
@@ -185,32 +179,29 @@
                 dangerMode: true,
             }).then((willDelete) => {
                 if (willDelete) {
-                    formBulkDelete.submit();
+                    $('#formBulkDelete').submit();
                 }
             });
         });
 
-        // Single Delete Action
-        const deleteSingleBtns = document.querySelectorAll('.btn-delete-single');
-        deleteSingleBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                swal({
-                    title: "Hapus Hari Libur?",
-                    text: "Sistem akan kembali mengaktifkan presensi di tanggal ini.",
-                    icon: "warning",
-                    buttons: ["Batal", "Hapus"],
-                    dangerMode: true,
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        const form = document.createElement('form');
-                        form.action = `<?= base_url('admin/holiday/delete') ?>/${id}`;
-                        form.method = 'POST';
-                        form.innerHTML = `<?= csrf_field() ?><input type="hidden" name="_method" value="DELETE">`;
-                        document.body.appendChild(form);
-                        form.submit();
-                    }
-                });
+        // Single Delete (delegated karena DataTable)
+        $(document).on('click', '.btn-delete-single', function() {
+            const id = $(this).data('id');
+            swal({
+                title: "Hapus Hari Libur?",
+                text: "Sistem akan kembali mengaktifkan presensi di tanggal ini.",
+                icon: "warning",
+                buttons: ["Batal", "Hapus"],
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    const form = document.createElement('form');
+                    form.action = '<?= base_url('admin/holiday/delete') ?>' + '/' + id;
+                    form.method = 'POST';
+                    form.innerHTML = '<?= csrf_field() ?><input type="hidden" name="_method" value="DELETE">';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
             });
         });
     });

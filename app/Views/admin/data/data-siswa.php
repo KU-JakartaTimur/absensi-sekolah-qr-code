@@ -124,11 +124,8 @@
          });
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-         $("#checkAll").click(function (e) {
-            console.log(e);
-            $('input:checkbox').not(this).prop('checked', this.checked);
-         });
+      $(document).on('click', '#checkAll', function () {
+         $('input:checkbox').not(this).prop('checked', this.checked);
       });
    </script>
    <?= $this->endSection() ?>
