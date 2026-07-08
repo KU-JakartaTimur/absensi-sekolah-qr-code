@@ -87,11 +87,7 @@
 
 <?= $this->section('scripts') ?>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    fetchKelasJurusanData('kelas', '#dataKelas');
-    fetchKelasJurusanData('jurusan', '#dataJurusan');
-  });
-
-
+  fetchKelasJurusanData('kelas', '#dataKelas');
+  fetchKelasJurusanData('jurusan', '#dataJurusan');
 </script>
 <?= $this->endSection() ?>
