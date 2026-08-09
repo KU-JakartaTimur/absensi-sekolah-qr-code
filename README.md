@@ -130,7 +130,8 @@ Klik link dibawah untuk mendukung pengembangan
 ### Persyaratan
 
 - [Composer](https://getcomposer.org/).
-- PHP 8.1+ dan MySQL/MariaDB atau [XAMPP](https://www.apachefriends.org/download.html) versi 8.1+ dengan mengaktifkan extension `intl` dan `gd`.
+- PHP 8.2+ dengan mengaktifkan extension `intl` dan `gd`.
+- MySQL/MariaDB.
 - Pastikan perangkat memiliki kamera/webcam untuk menjalankan qr scanner. Bisa juga menggunakan kamera HP dengan bantuan software DroidCam.
 
 ### Instalasi
