@@ -11,17 +11,28 @@ import os
 app = Flask(__name__)
 
 # Folder yang berisi wajah siswa
-KNOWN_FACES_DIR = "writable/faces"
+KNOWN_FACES_DIR = os.getenv("KNOWN_FACES_DIR", "writable/faces")
+ALLOWED_EXT = (".jpg", ".jpeg", ".png", ".bmp", ".webp")
 known_face_encodings = []
 known_face_names = []
 
-# Load semua wajah yang sudah didaftarkan
-for filename in os.listdir(KNOWN_FACES_DIR):
-    image = face_recognition.load_image_file(f"{KNOWN_FACES_DIR}/{filename}")
-    encoding = face_recognition.face_encodings(image)
+# Load semua wajah yang sudah didaftarkan.
+# File non-gambar (mis. .gitkeep) dan file rusak dilewati agar service tetap jalan.
+os.makedirs(KNOWN_FACES_DIR, exist_ok=True)
+for filename in sorted(os.listdir(KNOWN_FACES_DIR)):
+    if not filename.lower().endswith(ALLOWED_EXT):
+        continue
+    try:
+        image = face_recognition.load_image_file(f"{KNOWN_FACES_DIR}/{filename}")
+        encoding = face_recognition.face_encodings(image)
+    except Exception as e:
+        print(f"[face-api] Gagal memuat {filename}: {e}")
+        continue
     if encoding:
         known_face_encodings.append(encoding[0])
         known_face_names.append(filename.split(".")[0])  # Nama file = Nama siswa
+
+print(f"[face-api] {len(known_face_names)} wajah terdaftar dimuat dari {KNOWN_FACES_DIR}")
 
 @app.route("/verify-face", methods=["POST"])
 def verify_face():
