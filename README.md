@@ -267,12 +267,35 @@ Halaman berikut dapat diakses tanpa autentikasi:
 
 #### 10. Setup Python Face Recognition
 
-Pastikan Python yang terinstall, versi 3.12
+> **Penting:** Gunakan **Python 3.12** (bukan 3.13+). Library `dlib-bin` hanya tersedia sebagai pre-compiled wheel hingga Python 3.12.
+
+**Langkah setup (sekali saja):**
 
 ```bash
-python -m flask run --host 0.0.0.0 --port 5000
-# atau, untuk produksi:
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
+# 1. Buat virtual environment dengan Python 3.12
+py -3.12 -m venv venv-face
+
+# 2. Install semua dependensi
+venv-face\Scripts\pip install -r requirements.txt
+
+# 3. Install face_recognition (tanpa dependency check)
+venv-face\Scripts\pip install --no-deps face_recognition==1.3.0
+
+# 4. Install setuptools (dibutuhkan oleh face_recognition_models)
+venv-face\Scripts\pip install setuptools
+```
+
+**Jalankan server:**
+
+```bash
+# Development
+venv-face\Scripts\python face-api.py
+
+# Atau gunakan flask run
+venv-face\Scripts\python -m flask --app face-api run --host 0.0.0.0 --port 5000
+
+# Production
+venv-face\Scripts\gunicorn -w 4 -b 0.0.0.0:5000 face-api:app
 ```
 
 ### Daftar Groups & Permissions
