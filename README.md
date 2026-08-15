@@ -1,4 +1,4 @@
-# Aplikasi Web Sistem Absensi Sekolah Berbasis `QR Code`  (+ Dukungan RFID)
+# Aplikasi Web Sistem Absensi Sekolah Berbasis `QR Code` (+ Dukungan RFID)
 
 <a href="https://trendshift.io/repositories/11254" target="_blank" title="PHP | 24 July 2024">
   <img src="https://trendshift.io/api/badge/repositories/11254" alt="ikhsan3adi%2Fabsensi-sekolah-qr-code | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/>
@@ -22,7 +22,7 @@
     <img src="https://img.shields.io/github/watchers/ikhsan3adi/absensi-sekolah-qr-code?style=for-the-badge&labelColor=%239f39b5&color=%2300bcd4&logo=github" alt="GitHub watchers">
 </a>
 
-***
+---
 
 ![Preview](./screenshots/new-hero.png)
 
@@ -78,14 +78,13 @@ Aplikasi Web Sistem Absensi Sekolah adalah sebuah proyek yang bertujuan untuk me
 > - [SweetAlert](https://sweetalert2.github.io/)
 > - [DataTables](https://datatables.net/)
 >
-> ***
+> ---
 >
 > - [Fonnte](https://fonnte.com/) - WhatsApp API untuk mengirim pesan notifikasi
-> 
-> ***
-> 
+>
+> ---
+>
 > - [Face Recognition](https://github.com/ageitgey/face_recognition) - Fiture tambahan untuk Absensi Siswa/ Guru via Wajah
-> 
 
 ## Pratinjau
 
@@ -93,41 +92,41 @@ Aplikasi Web Sistem Absensi Sekolah adalah sebuah proyek yang bertujuan untuk me
 
 ### Sistem Presensi
 
-|                         <img src="./screenshots/new-scanner-1.9.10.png" height="320px" alt="RFID Scanner">  (NEW) QR Code + RFID                        | <br />                                                                            |
-| :-----------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------- |
-|                                                                          <br />                                                                         | ![Hasil Scan Absensi](./screenshots/absen.jpg)  Hasil Presensi Masuk/Pulang (OLD) |
-| <img src="./screenshots/notif-wa.png" width="320px" alt="Notifikasi WA">  Notifikasi otomatis dikirim ke nomor HP siswa/guru setelah berhasil presensi. | <br />                                                                            |
+|                        <img src="./screenshots/new-scanner-1.9.10.png" height="320px" alt="RFID Scanner"> (NEW) QR Code + RFID                         | <br />                                                                           |
+| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------- |
+|                                                                         <br />                                                                         | ![Hasil Scan Absensi](./screenshots/absen.jpg) Hasil Presensi Masuk/Pulang (OLD) |
+| <img src="./screenshots/notif-wa.png" width="320px" alt="Notifikasi WA"> Notifikasi otomatis dikirim ke nomor HP siswa/guru setelah berhasil presensi. | <br />                                                                           |
 
-***
+---
 
 ### Dashboard Admin
 
-|   ![Dashboard Admin](./screenshots/admin-dashboard-1.9.10.png)  Dashboard Utama  |                         ![Absen Siswa](./screenshots/absen-siswa-1.9.10.png)  Absensi Siswa                         |        ![Absen Guru](./screenshots/absen-guru-1.9.10.png)  Absensi Guru        |
-| :------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
-|      ![Generate Laporan](./screenshots/laporan-1.9.10.png)  Generate Laporan     |                         ![CRUD Data Siswa](./screenshots/data-siswa-1.9.10.png)  Data Siswa                         |        ![CRUD Data Guru](./screenshots/data-guru-1.9.10.png)  Data Guru        |
-|      ![Generate QR](./screenshots/generate-qr-1.9.10.png)  Generate QR Code      | ![Data Kelas & Jurusan](./screenshots/kelas-jurusan-1.9.10.png)  Data kelas, jurusan, dan **penugasan Wali Kelas**. | ![Backup & Restore](./screenshots/backup-restore-1.9.10.png)  Backup & Restore |
-| ![Ubah Data Kehadiran](./screenshots/ubah-kehadiran.jpeg)  Edit Status Kehadiran |                           ![Login Petugas](./screenshots/login-1.9.10.png)  Login Petugas                           |         ![Pengaturan](./screenshots/pengaturan-1.9.10.png)  Pengaturan         |
+|  ![Dashboard Admin](./screenshots/admin-dashboard-1.9.10.png) Dashboard Utama   |                         ![Absen Siswa](./screenshots/absen-siswa-1.9.10.png) Absensi Siswa                         |        ![Absen Guru](./screenshots/absen-guru-1.9.10.png) Absensi Guru        |
+| :-----------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------: |
+|     ![Generate Laporan](./screenshots/laporan-1.9.10.png) Generate Laporan      |                         ![CRUD Data Siswa](./screenshots/data-siswa-1.9.10.png) Data Siswa                         |        ![CRUD Data Guru](./screenshots/data-guru-1.9.10.png) Data Guru        |
+|      ![Generate QR](./screenshots/generate-qr-1.9.10.png) Generate QR Code      | ![Data Kelas & Jurusan](./screenshots/kelas-jurusan-1.9.10.png) Data kelas, jurusan, dan **penugasan Wali Kelas**. | ![Backup & Restore](./screenshots/backup-restore-1.9.10.png) Backup & Restore |
+| ![Ubah Data Kehadiran](./screenshots/ubah-kehadiran.jpeg) Edit Status Kehadiran |                           ![Login Petugas](./screenshots/login-1.9.10.png) Login Petugas                           |         ![Pengaturan](./screenshots/pengaturan-1.9.10.png) Pengaturan         |
 
-***
+---
 
 ### Dashboard Wali Kelas
 
-|        ![Dashboard Wali Kelas](./screenshots/dashboard-wali-kelas-1.9.10.png)        |  ![Manajemen Kehadiran Kelas](./screenshots/wali-kelas-kehadiran-1.9.10.png) |
+|        ![Dashboard Wali Kelas](./screenshots/dashboard-wali-kelas-1.9.10.png)        | ![Manajemen Kehadiran Kelas](./screenshots/wali-kelas-kehadiran-1.9.10.png)  |
 | :----------------------------------------------------------------------------------: | :--------------------------------------------------------------------------: |
 | Dashboard khusus untuk guru wali kelas dengan statistik kehadiran siswa di kelasnya. | Wali kelas dapat melihat dan mengelola kehadiran siswa di kelas yang diampu. |
 
 > Dan masih banyak fitur lainnya...
 
-***
+---
 
 ## Donasi ❤
 
 Klik link dibawah untuk mendukung pengembangan
 
-[![Donate trakteer](https://img.shields.io/badge/Donate-Trakteer-red?style=for-the-badge\&link=https%3A%2F%2Ftrakteer.id%2Fikhsan3adi%2Ftip\&labelColor=%239f39b5\&color=%2300bcd4)](https://trakteer.id/ikhsan3adi/tip)
-[![Donate saweria](https://img.shields.io/badge/Donate-Saweria-red?style=for-the-badge\&link=https%3A%2F%2Fsaweria.co%2Fxiboxann\&labelColor=%239f39b5\&color=%2300bcd4)](https://saweria.co/xiboxann)
+[![Donate trakteer](https://img.shields.io/badge/Donate-Trakteer-red?style=for-the-badge&link=https%3A%2F%2Ftrakteer.id%2Fikhsan3adi%2Ftip&labelColor=%239f39b5&color=%2300bcd4)](https://trakteer.id/ikhsan3adi/tip)
+[![Donate saweria](https://img.shields.io/badge/Donate-Saweria-red?style=for-the-badge&link=https%3A%2F%2Fsaweria.co%2Fxiboxann&labelColor=%239f39b5&color=%2300bcd4)](https://saweria.co/xiboxann)
 
-***
+---
 
 ## Cara Penggunaan
 
@@ -183,7 +182,10 @@ CREATE DATABASE db_absensi;
 Migration akan membuat semua struktur tabel yang diperlukan:
 
 ```bash
-php spark migrate --all
+// All Migration!
+php spark migrate
+// If Single File Migration
+php spark migrate:file "app\Database\Migrations\2025-11-19-204424_LogActivity.php"
 ```
 
 **Tabel yang akan dibuat:**
@@ -261,7 +263,7 @@ Halaman berikut dapat diakses tanpa autentikasi:
 - `/izin` - Form pengajuan izin/sakit untuk siswa
 - `/cek-kehadiran` - Portal cek kehadiran siswa
 
-> **Untuk panduan lengkap tentang migration dan seeder**, lihat [MIGRATION\_GUIDE.md](./MIGRATION_GUIDE.md)
+> **Untuk panduan lengkap tentang migration dan seeder**, lihat [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md)
 
 #### 10. Setup Python Face Recognition
 
@@ -349,9 +351,9 @@ Setelah login sebagai wali kelas, Anda dapat:
 
 Aplikasi mendukung import data secara massal menggunakan file CSV:
 
-- **Import Data Siswa** - Buka menu Data Siswa > Import CSV. Download template [csv\_siswa\_template.csv](./public/assets/file/csv_siswa_template.csv) dan upload setelah diisi. Contoh [csv\_siswa\_example.csv](./public/assets/file/csv_siswa_example.csv)
+- **Import Data Siswa** - Buka menu Data Siswa > Import CSV. Download template [csv_siswa_template.csv](./public/assets/file/csv_siswa_template.csv) dan upload setelah diisi. Contoh [csv_siswa_example.csv](./public/assets/file/csv_siswa_example.csv)
   > Pastikan id kelas cocok dengan data kelas yang ada di database
-- **Import Data Guru** - Buka menu Data Guru > Import CSV. Download template [csv\_guru\_template.csv](./public/assets/file/csv_guru_template.csv) dan upload setelah diisi.
+- **Import Data Guru** - Buka menu Data Guru > Import CSV. Download template [csv_guru_template.csv](./public/assets/file/csv_guru_template.csv) dan upload setelah diisi.
   > Perhatikan untuk impor data guru & siswa:
   >
   > ```csv
@@ -361,7 +363,7 @@ Aplikasi mendukung import data secara massal menggunakan file CSV:
   > ```
   >
   > Sistem otomatis menormalisasi variasi input jenis kelamin. Nilai seperti `L`, `P`, `laki-laki`, `laki`, `perempuan`, `cewe` akan dikenali dan dikonversi ke nilai database yang benar.
-- **Import Data Jurusan dan Kelas** - Buka menu Kelas & Jurusan > Jurusan > Import (Jurusan/Kelas). Download template [csv\_jurusan\_template.csv](./public/assets/file/csv_jurusan_template.csv) atau [csv\_kelas\_template.csv](./public/assets/file/csv_kelas_template.csv) dan upload setelah diisi.
+- **Import Data Jurusan dan Kelas** - Buka menu Kelas & Jurusan > Jurusan > Import (Jurusan/Kelas). Download template [csv_jurusan_template.csv](./public/assets/file/csv_jurusan_template.csv) atau [csv_kelas_template.csv](./public/assets/file/csv_kelas_template.csv) dan upload setelah diisi.
   > Penting untuk memastikan kolom jurusan pada csv kelas harus **SUDAH ADA** dan **$PERSIS \space SAMA$** dengan yang ada di database jurusan.
   >
   > Direkomendasikan untuk impor jurusan dahulu lalu impor kelas
@@ -434,7 +436,7 @@ Untuk menghentikan container:
 docker-compose down
 ```
 
-***
+---
 
 ## Kesimpulan
 
@@ -466,4 +468,3 @@ Kami menerima kontribusi dari komunitas terbuka untuk meningkatkan aplikasi ini.
 - [@pandigresik](https://github.com/pandigresik)
 - [@hex4coder](https://github.com/hex4coder)
 - [@mdestafadilah](https://github.com/mdestafadilah)
-
