@@ -69,7 +69,7 @@ class CreateCameraCaptureTable extends Migration
         $this->forge->addKey('entity_type');
         $this->forge->addKey('entity_id');
         $this->forge->addKey('captured_by');
-        $this->forge->createTable('tb_camera_capture');
+        $this->forge->createTable('tb_camera_capture', true);
     }
 
     public function down()
