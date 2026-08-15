@@ -267,6 +267,8 @@ Halaman berikut dapat diakses tanpa autentikasi:
 
 #### 10. Setup Python Face Recognition
 
+Pastikan Python yang terinstall, versi 3.12
+
 ```bash
 python -m flask run --host 0.0.0.0 --port 5000
 # atau, untuk produksi:
