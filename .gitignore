@@ -136,3 +136,4 @@ bash.exe.stackdump
 
 .trae
 venv-face
+writable/faces/*
