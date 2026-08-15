@@ -225,7 +225,18 @@ $routes->group('admin', function (RouteCollection $routes) {
       $routes->get('photos/backup', 'Admin\Backup::photosBackup');
       $routes->post('photos/restore', 'Admin\Backup::photosRestore');
    });
+
+   // ── Camera Capture (camera.manage) ──
+   $routes->group('camera-capture', ['filter' => 'permission:camera.manage'], function ($routes) {
+      $routes->get('/', 'Admin\CameraCapture::index');
+      $routes->get('create', 'Admin\CameraCapture::create');
+      $routes->post('store', 'Admin\CameraCapture::store');
+      $routes->get('(:num)', 'Admin\CameraCapture::show/$1');
+      $routes->get('image/(:num)', 'Admin\CameraCapture::serveImage/$1');
+      $routes->delete('delete/(:num)', 'Admin\CameraCapture::delete/$1');
+   });
 });
+
 
 // ═══════════════════════════════════════════
 // TEACHER AREA
