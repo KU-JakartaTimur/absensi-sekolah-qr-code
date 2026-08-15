@@ -42,6 +42,7 @@ $routes->group('scan', function (RouteCollection $routes) {
    $routes->get('masuk', 'Scan::index/Masuk');
    $routes->get('pulang', 'Scan::index/Pulang');
    $routes->post('cek', 'Scan::cekKode');
+   $routes->post('face', 'Scan::verifyFace');
 });
 
 // Perizinan Publik
