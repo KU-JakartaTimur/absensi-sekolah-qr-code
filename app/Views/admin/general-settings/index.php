@@ -50,7 +50,7 @@
                                 <div class="row">
                                     <?php
                                     $hariList = ['1' => 'Senin', '2' => 'Selasa', '3' => 'Rabu', '4' => 'Kamis', '5' => "Jum'at", '6' => 'Sabtu', '7' => 'Minggu'];
-                                    $hariKerja = !empty($generalSettings->hari_kerja) ? explode(',', $generalSettings->hari_kerja) : ['1','2','3','4','5'];
+                                    $hariKerja = !empty($generalSettings->working_days) ? explode(',', $generalSettings->working_days) : ['1','2','3','4','5'];
                                     foreach ($hariList as $val => $label):
                                         $checked = in_array($val, $hariKerja) ? 'checked' : '';
                                     ?>

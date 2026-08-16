@@ -23,7 +23,7 @@ class GeneralSettingsModel extends BaseModel
          'school_year' => inputPost('school_year'),
          'jam_masuk_limit' => inputPost('jam_masuk_limit'),
          'jam_pulang_standard' => inputPost('jam_pulang_standard'),
-         'hari_kerja' => is_array($hariKerja) ? implode(',', $hariKerja) : '1,2,3,4,5',
+         'working_days' => is_array($hariKerja) ? implode(',', $hariKerja) : '1,2,3,4,5',
          'copyright' => inputPost('copyright'),
       ];
    }
