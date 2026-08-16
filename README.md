@@ -298,6 +298,15 @@ venv-face\Scripts\python -m flask --app face-api run --host 0.0.0.0 --port 5000
 venv-face\Scripts\gunicorn -w 4 -b 0.0.0.0:5000 face-api:app
 ```
 
+#### 11. Setup Text to Speech
+
+```bash
+# server tts: https://github.com/rsuppersahabatan/Edge-TTS-API
+TTS_API_BASE=server_tts
+TTS_VOICE=male
+TTS_RATE=-3%
+```
+
 ### Daftar Groups & Permissions
 
 Role pengguna dikelola menggunakan **CodeIgniter Shield groups**. Tiap user bisa memiliki lebih dari satu group.

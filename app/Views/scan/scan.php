@@ -187,6 +187,16 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
 <?= $this->section('scripts') ?>
 <script type="text/javascript" src="<?= base_url('assets/js/plugins/zxing/zxing.min.js') ?>"></script>
+
+<!-- TTS Konfigurasi (dari .env) -->
+<script>
+   window.ttsApiBase  = '<?= rtrim(getenv('TTS_API_BASE') ?: 'http://localhost:8085', '/'); ?>';
+   window.ttsVoice    = '<?= getenv('TTS_VOICE') ?: 'female'; ?>';
+   window.ttsRate     = '<?= getenv('TTS_RATE') ?: '+0%'; ?>';
+   window.ttsLanguage = 'indonesian';
+</script>
+<script type="text/javascript" src="<?= base_url('assets/js/tts.js') ?>"></script>
+
 <script type="text/javascript">
    let selectedDeviceId = null;
    let audio = new Audio("<?= base_url('assets/audio/beep.mp3'); ?>");
@@ -295,6 +305,17 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
          success: function (response) {
             audio.play();
             $('#hasilScan').html(response);
+
+            // TTS: ucapkan nama siswa/guru yang baru absen (face scan)
+            var wrapper = $('#hasilScan').find('.absen-result-wrapper');
+            if (wrapper.length) {
+               var nama  = wrapper.data('tts-name');
+               var waktu = wrapper.data('tts-waktu');
+               if (nama && typeof speakAbsensi === 'function') {
+                  speakAbsensi(nama, waktu);
+               }
+            }
+
             $('html, body').animate({ scrollTop: $('#hasilScan').offset().top }, 500);
             $('#faceStatusText').text('Kamera wajah: Siap');
             $('#faceBadge').removeClass('badge-info badge-danger').addClass('badge-success');
@@ -397,6 +418,16 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
             audio.play();
             console.log(response);
             $('#hasilScan').html(response);
+
+            // TTS: ucapkan nama siswa/guru yang baru absen
+            var wrapper = $('#hasilScan').find('.absen-result-wrapper');
+            if (wrapper.length) {
+               var nama  = wrapper.data('tts-name');
+               var waktu = wrapper.data('tts-waktu');
+               if (nama && typeof speakAbsensi === 'function') {
+                  speakAbsensi(nama, waktu);
+               }
+            }
 
             $('html, body').animate({
                scrollTop: $("#hasilScan").offset().top
