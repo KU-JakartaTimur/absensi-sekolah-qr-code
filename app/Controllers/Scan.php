@@ -260,7 +260,8 @@ class Scan extends BaseController
       }
 
       // ── Kirim ke Python face-recognition service ──
-      $faceApiUrl = getenv('FACE_API_URL') ?: 'http://localhost:5000/verify-face';
+      $faceApiBase = rtrim(getenv('FACE_API_URL') ?: 'http://localhost:5000', '/');
+      $faceApiUrl  = str_ends_with($faceApiBase, '/verify-face') ? $faceApiBase : ($faceApiBase . '/verify-face');
 
       $ch = curl_init($faceApiUrl);
       curl_setopt_array($ch, [
