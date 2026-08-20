@@ -305,9 +305,8 @@ function savePhoto() {
       type: 'POST',
       contentType: 'application/json',
       headers: {
-         'X-Requested-With': 'XMLHttpRequest',
-         'X-CSRF-TOKEN': $('meta[name="X-CSRF-TOKEN"]').attr('content'),
-         [BaseConfig.csrfTokenName]: $('meta[name="X-CSRF-TOKEN"]').attr('content'),
+        'X-Requested-With': 'XMLHttpRequest',
+        [BaseConfig.csrfTokenName]: Cookies.get(BaseConfig.csrfTokenName),
       },
       data: JSON.stringify({
          image:       capturedBase64,

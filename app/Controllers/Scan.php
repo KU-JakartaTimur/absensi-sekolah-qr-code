@@ -276,11 +276,14 @@ class Scan extends BaseController
       $curlErr  = curl_error($ch);
       curl_close($ch);
 
-      if ($curlErr) {
-         return $this->showErrorView('Face recognition service tidak dapat dihubungi: ' . $curlErr);
+      if ($raw === false) {
+        return $this->showErrorView('Face recognition service tidak dapat dihubungi' . ($curlErr ? ': ' . $curlErr : ''));
       }
 
       $apiResult = json_decode($raw, true);
+      if (!is_array($apiResult)) {
+        return $this->showErrorView('Respons dari face recognition service tidak valid.');
+      }
 
       if ($httpCode !== 200 || ($apiResult['status'] ?? '') !== 'success') {
          $errMsg = $apiResult['message'] ?? 'Wajah tidak dikenali.';

@@ -190,9 +190,9 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
 <!-- TTS Konfigurasi (dari .env) -->
 <script>
-   window.ttsApiBase  = '<?= rtrim(getenv('TTS_API_BASE') ?: 'http://localhost:8085', '/'); ?>';
-   window.ttsVoice    = '<?= getenv('TTS_VOICE') ?: 'female'; ?>';
-   window.ttsRate     = '<?= getenv('TTS_RATE') ?: '+0%'; ?>';
+   window.ttsApiBase  = <?= json_encode(rtrim(getenv('TTS_API_BASE') ?: 'http://localhost:8085', '/')); ?>;
+   window.ttsVoice    = <?= json_encode(getenv('TTS_VOICE') ?: 'female'); ?>;
+   window.ttsRate     = <?= json_encode(getenv('TTS_RATE') ?: '+0%'); ?>;
    window.ttsLanguage = 'indonesian';
 </script>
 <script type="text/javascript" src="<?= base_url('assets/js/tts.js') ?>"></script>
