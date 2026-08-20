@@ -302,24 +302,14 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
             'face_encoding': dataUrl,
             'waktu': '<?= strtolower($waktu); ?>'
          }),
-         success: function (response) {
-            audio.play();
-            $('#hasilScan').html(response);
-
-            // TTS: ucapkan nama siswa/guru yang baru absen (face scan)
-            var wrapper = $('#hasilScan').find('.absen-result-wrapper');
-            if (wrapper.length) {
-               var nama  = wrapper.data('tts-name');
-               var waktu = wrapper.data('tts-waktu');
-               if (nama && typeof speakAbsensi === 'function') {
-                  speakAbsensi(nama, waktu);
-               }
-            }
-
-            $('html, body').animate({ scrollTop: $('#hasilScan').offset().top }, 500);
-            $('#faceStatusText').text('Kamera wajah: Siap');
-            $('#faceBadge').removeClass('badge-info badge-danger').addClass('badge-success');
-         },
+success: function (response) {
+             audio.play();
+             $('#hasilScan').html(response);
+             announceAbsensiFromResponse();
+             $('html, body').animate({ scrollTop: $('#hasilScan').offset().top }, 500);
+             $('#faceStatusText').text('Kamera wajah: Siap');
+             $('#faceBadge').removeClass('badge-info badge-danger').addClass('badge-success');
+          },
          error: function (xhr) {
             $('#hasilScan').html(xhr.responseText || 'Terjadi kesalahan.');
             $('#faceStatusText').text('Gagal mengenali wajah');
@@ -414,25 +404,15 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
             'unique_code': code,
             'waktu': '<?= strtolower($waktu); ?>'
          }),
-         success: function (response, status, xhr) {
-            audio.play();
-            console.log(response);
-            $('#hasilScan').html(response);
-
-            // TTS: ucapkan nama siswa/guru yang baru absen
-            var wrapper = $('#hasilScan').find('.absen-result-wrapper');
-            if (wrapper.length) {
-               var nama  = wrapper.data('tts-name');
-               var waktu = wrapper.data('tts-waktu');
-               if (nama && typeof speakAbsensi === 'function') {
-                  speakAbsensi(nama, waktu);
-               }
-            }
-
-            $('html, body').animate({
-               scrollTop: $("#hasilScan").offset().top
-            }, 500);
-         },
+success: function (response, status, xhr) {
+             audio.play();
+             console.log(response);
+             $('#hasilScan').html(response);
+             announceAbsensiFromResponse();
+             $('html, body').animate({
+                scrollTop: $("#hasilScan").offset().top
+             }, 500);
+          },
          error: function (xhr, status, thrown) {
             console.log(thrown);
             $('#hasilScan').html(thrown);
@@ -442,9 +422,20 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
    function clearData() {
       $('#hasilScan').html('');
-   }
+}
 
-   // RFID Listener
+    function announceAbsensiFromResponse() {
+       var wrapper = $('#hasilScan').find('.absen-result-wrapper');
+       if (wrapper.length) {
+          var nama  = wrapper.data('tts-name');
+          var waktu = wrapper.data('tts-waktu');
+          if (nama && typeof speakAbsensi === 'function') {
+             speakAbsensi(nama, waktu);
+          }
+       }
+    }
+
+    // RFID Listener
    $('#rfidInput').on('keypress', function (e) {
       if (e.which == 13) {
          let code = $(this).val().trim();

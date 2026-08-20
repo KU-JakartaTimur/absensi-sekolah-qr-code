@@ -92,10 +92,10 @@ Aplikasi Web Sistem Absensi Sekolah adalah sebuah proyek yang bertujuan untuk me
 
 ### Sistem Presensi
 
-|                        <img src="./screenshots/new-scanner-1.9.10.png" height="320px" alt="RFID Scanner"> (NEW) QR Code + RFID                         | <br />                                                                           |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------- |
-|                                                                         <br />                                                                         | ![Hasil Scan Absensi](./screenshots/absen.jpg) Hasil Presensi Masuk/Pulang (OLD) |
-| <img src="./screenshots/notif-wa.png" width="320px" alt="Notifikasi WA"> Notifikasi otomatis dikirim ke nomor HP siswa/guru setelah berhasil presensi. | <br />                                                                           |
+|                        <img src="./screenshots/new-scanner-1.9.10.png" height="320px" alt="RFID Scanner"> <br> (NEW) QR Code + RFID                         |
+| :---------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                                    ![Hasil Scan Absensi](./screenshots/absen.jpg) <br> Hasil Presensi Masuk/Pulang (OLD)                                    |
+| <img src="./screenshots/notif-wa.png" width="320px" alt="Notifikasi WA"> <br> Notifikasi otomatis dikirim ke nomor HP siswa/guru setelah berhasil presensi. |
 
 ---
 
@@ -302,7 +302,7 @@ venv-face\Scripts\gunicorn -w 4 -b 0.0.0.0:5000 face-api:app
 
 ```bash
 # server tts: https://github.com/rsuppersahabatan/Edge-TTS-API
-TTS_API_BASE=server_tts
+# TTS_API_BASE=http://localhost:8085
 TTS_VOICE=male
 TTS_RATE=-3%
 ```
