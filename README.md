@@ -65,7 +65,7 @@ Aplikasi Web Sistem Absensi Sekolah adalah sebuah proyek yang bertujuan untuk me
 - **Live Monitoring.** Dashboard admin dan wali kelas menampilkan data real-time dengan polling periodik.
 - **Audit Log.** Sistem mencatat semua aktivitas CRUD (siapa, apa, kapan, nilai lama dan baru) untuk keperluan audit dan troubleshooting.
 
-> \[!NOTE]
+> [!NOTE]
 >
 > ## Framework dan Library Yang Digunakan
 >
@@ -182,9 +182,9 @@ CREATE DATABASE db_absensi;
 Migration akan membuat semua struktur tabel yang diperlukan:
 
 ```bash
-// All Migration!
+# All Migration!
 php spark migrate
-// If Single File Migration
+# If Single File Migration
 php spark migrate:file "app\Database\Migrations\2025-11-19-204424_LogActivity.php"
 ```
 
@@ -289,13 +289,13 @@ venv-face\Scripts\pip install setuptools
 
 ```bash
 # Development
-venv-face\Scripts\python face-api.py
+venv-face\Scripts\python face_api.py
 
 # Atau gunakan flask run
-venv-face\Scripts\python -m flask --app face-api run --host 0.0.0.0 --port 5000
+venv-face\Scripts\python -m flask --app face_api run --host 0.0.0.0 --port 5000
 
 # Production
-venv-face\Scripts\gunicorn -w 4 -b 0.0.0.0:5000 face-api:app
+venv-face\Scripts\gunicorn -w 4 -b 0.0.0.0:5000 face_api:app
 ```
 
 #### 11. Setup Text to Speech

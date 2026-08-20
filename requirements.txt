@@ -1,4 +1,4 @@
-# Dependencies untuk face-api.py (service Flask face recognition).
+# Dependencies untuk face_api.py (service Flask face recognition).
 #
 # CATATAN: paket `face_recognition` sengaja TIDAK dicantumkan di sini.
 # Metadata-nya mewajibkan distribusi `dlib`, yang di-build dari source
