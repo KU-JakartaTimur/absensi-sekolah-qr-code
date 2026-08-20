@@ -43,6 +43,12 @@ def verify_face():
         img_array = np.frombuffer(img_data, dtype=np.uint8)
         img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
 
+        if img is None:
+            return jsonify({"status": "error", "message": "Gambar tidak dapat diproses!"}), 400
+
+        # Konversi BGR (OpenCV) → RGB (face_recognition)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
         # Cari wajah dalam gambar
         face_locations = face_recognition.face_locations(img)
         face_encodings = face_recognition.face_encodings(img, face_locations)

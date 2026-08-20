@@ -301,15 +301,15 @@ if (!function_exists('getCSVInputValue')) {
     }
 }
 
-//check if a date is a working day based on general_settings.working_days
+//check if a date is a working day based on general_settings.hari_kerja
 if (!function_exists('isWorkingDay')) {
     function isWorkingDay($date)
     {
         $dayNum = date('N', strtotime($date));
         $schoolConfig = new \Config\School();
         $settings = $schoolConfig::$generalSettings;
-        if (!empty($settings) && !empty($settings->working_days)) {
-            $workingDays = array_map('trim', explode(',', $settings->working_days));
+        if (!empty($settings) && !empty($settings->hari_kerja)) {
+            $workingDays = array_map('trim', explode(',', $settings->hari_kerja));
             return in_array((string)$dayNum, $workingDays);
         }
         return $dayNum <= 5;

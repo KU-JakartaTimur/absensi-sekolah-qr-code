@@ -45,7 +45,7 @@ services:
     working_dir: /app
     volumes:
       # Bind-mount agar perubahan script & data wajah tidak perlu rebuild image.
-      - ./face-api.py:/app/face-api.py:ro
+      - ./face_api.py:/app/face_api.py:ro
       - ./writable/faces:/app/writable/faces
     networks:
       - app-network
